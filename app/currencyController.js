@@ -4,7 +4,7 @@
 		$scope.what = 1;
 		$scope.from = 'EUR';
 		$scope.to = 'USD';
-		$scope.result = 1.12855;
+		$scope.result = 'Saisir une valeur';
 
 		$http.get('./app/data/currencymap.json').success (function(data) {
 			$scope.currencies = data;
