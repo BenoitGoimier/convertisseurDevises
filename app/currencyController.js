@@ -4,7 +4,15 @@ angular.module('currencyApp').controller("CurrencyController", ['$scope', '$http
     $scope.from = 'EUR';
     $scope.to = 'USD';
     $scope.result = 'En cours...';
-    $scope.history = [];
+    
+    $scope.history = [
+        {
+            from:'USA',
+            to:'EUR',
+            what:1,
+            rate:1
+        }
+    ];
 
     $http.get('./app/data/currencymap.json').success (function(data) {
         $scope.currencies = data;
@@ -19,6 +27,7 @@ angular.module('currencyApp').controller("CurrencyController", ['$scope', '$http
 
         $http.jsonp(this.url).success(function(data) {
             $scope.result = data.v;
+            $scope.history.push(data);
         });
     };
 

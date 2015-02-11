@@ -20,12 +20,13 @@
                 <fieldset class="form-group" style="margin: 5px;">
                     <input class="form-control" ng-model="what" ng-change="currencyc.getResult()" type="number" min="0.00" step="0.01" style="width: 10%; float: left; margin-right: 5px;">
                     <select class="form-control" ng-model="from" style="width: 34%; float: left; margin-right: 5px;">
-                        <option ng-repeat="currencie in currencies" ng-click="currencyc.getResult()" ng-change="currencyc.getResult()" ng-selected="currencie.code == 'EUR'" value="{{currencie.code}}">
+                        <option ng-repeat="currencie in currencies" ng-click="currencyc.getResult()" ng-selected="currencie.code == 'EUR'" value="{{currencie.code}}">
                             {{currencie.code + ' - ' + currencie.name}}
                         </option>
                     </select>
                     <button class="btn btn-primary" type="button" ng-click="currencyc.swap(); currencyc.getResult()" class="form-control" style="width: 10%; float: left; margin-right: 5px;">
-                        Echanger <->
+                        Echanger
+                        <->
                     </button>
                     <select class="form-control" ng-model="to" style="width: 34%; float: left; margin-right: 5px;">
                         <option ng-repeat="currencie in currencies" ng-click="currencyc.getResult()" ng-selected="currencie.code == 'USD'" value="{{currencie.code}}">
@@ -34,7 +35,28 @@
                     </select>
                     <input class="form-control" ng-model="result" type="text" name="lname" disabled style="width: 10%; float: left;">
                 </fieldset>
-
+                <div>
+                    <table class="table table-striped" style="table-layout:fixed;width: 100%">
+                        <tbody>
+                            <tr>
+                                <th>De</th>
+                                <th>En</th>
+                                <th class="text-center">Tx</th>
+                                <th class="text-center">Montant</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Delta</th>
+                            </tr>
+                            <tr class="animate-repeat ng-scope" ng-repeat="data in history" >
+                                <td class="ng-binding">{{data.from}}</td>
+                                <td class="ng-binding">{{data.to}}</td>
+                                <td class="text-center ng-binding">{{data.rate}}</td>
+                                <td class="text-center ng-binding">{{data.what}}</td>
+                                <td class="text-center ng-binding">11/02/15 10:45:18</td>
+                                <td class="text-center ng-binding">---</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
